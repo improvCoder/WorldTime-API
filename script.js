@@ -1,6 +1,12 @@
 
-	const url1='https://cors-anywhere.herokuapp.com/http://worldtimeapi.org/api/timezone/America/Los_Angeles'
-	const url='https://cors-anywhere.herokuapp.com/http://worldtimeapi.org/api/timezone'
+
+function myfunction(){
+
+
+var city=document.getElementById('user_Input').value;
+	const url1='https://cors-anywhere.herokuapp.com/http://worldtimeapi.org/api/timezone/America/'+city
+	//const url='https://cors-anywhere.herokuapp.com/http://worldtimeapi.org/api/timezone'
+
 
 fetch(url1,{
 		headers:{
@@ -15,15 +21,12 @@ fetch(url1,{
 	})
 	.then(data =>{
 		console.log(data);
-		var city=data.timezone
-		var time= data.datetime
-		console.log(city)
-		console.log(time)
+		document.getElementById("city").innerHTML=data.timezone;
+		document.getElementById("time").innerHTML=data.datetime;
 	})
 	.catch(error=> {
 		console.error('Error was found',error);
 	
 	});
 
-
-
+}
